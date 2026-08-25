@@ -1,22 +1,22 @@
 {
   "mappings": [
-    "/content/aireline/language-masters/en:/",
-    "/content/aireline/language-masters/en/:/en/",
-    "/content/aireline/language-masters/fr/:/fr/",
-    "/content/aireline/language-masters/fr:/fr",
-    "/content/aireline/language-masters/es/:/es/",
-    "/content/aireline/language-masters/es:/es",
-    "/content/aireline/language-masters/ja/:/ja/",
-    "/content/aireline/language-masters/ja:/ja",
-    "/content/aireline/language-masters/de/:/de/",
-    "/content/aireline/language-masters/de:/de",
-    "/content/aireline/configuration:/.helix/config.json",
-    "/content/aireline/metadata:/metadata.json",
-    "/content/aireline/redirects:/redirects.json",
-    "/content/aireline/placeholders:/placeholders.json"
+    "/content/airline/language-masters/en:/",
+    "/content/airline/language-masters/en/:/en/",
+    "/content/airline/language-masters/fr/:/fr/",
+    "/content/airline/language-masters/fr:/fr",
+    "/content/airline/language-masters/es/:/es/",
+    "/content/airline/language-masters/es:/es",
+    "/content/airline/language-masters/ja/:/ja/",
+    "/content/airline/language-masters/ja:/ja",
+    "/content/airline/language-masters/de/:/de/",
+    "/content/airline/language-masters/de:/de",
+    "/content/airline/configuration:/.helix/config.json",
+    "/content/airline/metadata:/metadata.json",
+    "/content/airline/redirects:/redirects.json",
+    "/content/airline/placeholders:/placeholders.json"
   ],
   "includes": [
-    "/content/aireline/",
+    "/content/airline/",
     "/content/dam/aireline/"
   ]
 }
