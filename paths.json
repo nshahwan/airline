@@ -1,22 +1,22 @@
 {
   "mappings": [
-    "/content/wknd-universal/language-masters/en:/",
-    "/content/wknd-universal/language-masters/en/:/en/",
-    "/content/wknd-universal/language-masters/fr/:/fr/",
-    "/content/wknd-universal/language-masters/fr:/fr",
-    "/content/wknd-universal/language-masters/es/:/es/",
-    "/content/wknd-universal/language-masters/es:/es",
-    "/content/wknd-universal/language-masters/ja/:/ja/",
-    "/content/wknd-universal/language-masters/ja:/ja",
-    "/content/wknd-universal/language-masters/de/:/de/",
-    "/content/wknd-universal/language-masters/de:/de",
-    "/content/wknd-universal/configuration:/.helix/config.json",
-    "/content/wknd-universal/metadata:/metadata.json",
-    "/content/wknd-universal/redirects:/redirects.json",
-    "/content/wknd-universal/placeholders:/placeholders.json"
+    "/content/aireline/language-masters/en:/",
+    "/content/aireline/language-masters/en/:/en/",
+    "/content/aireline/language-masters/fr/:/fr/",
+    "/content/aireline/language-masters/fr:/fr",
+    "/content/aireline/language-masters/es/:/es/",
+    "/content/aireline/language-masters/es:/es",
+    "/content/aireline/language-masters/ja/:/ja/",
+    "/content/aireline/language-masters/ja:/ja",
+    "/content/aireline/language-masters/de/:/de/",
+    "/content/aireline/language-masters/de:/de",
+    "/content/aireline/configuration:/.helix/config.json",
+    "/content/aireline/metadata:/metadata.json",
+    "/content/aireline/redirects:/redirects.json",
+    "/content/aireline/placeholders:/placeholders.json"
   ],
   "includes": [
-    "/content/wknd-universal/",
-    "/content/dam/wknd-universal/"
+    "/content/aireline/",
+    "/content/dam/aireline/"
   ]
 }
