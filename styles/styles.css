@@ -22,6 +22,20 @@
 */
 
 :root {
+  /* ---- Saudia brand palette ---- */
+  --saudia-green: #005a4f;
+  --saudia-green-dark: #0a342e;
+  --saudia-sand: #c9a15a;
+  --saudia-sand-light: #e4d2a8;
+
+  /* Map the theme's brand tokens onto the Saudia palette */
+  --brand-theme-color: var(--saudia-sand);
+  --brand-dark-color: var(--saudia-green-dark);
+  --brand-link-color: var(--saudia-green);
+  --brand-link-hover-color: var(--saudia-sand);
+  --brand-nav-background-color: var(--saudia-green-dark);
+  --brand-footer-background-color: var(--saudia-green-dark);
+
   /* colors */
   --background-color: var(--brand-background-color, #ffffff);
   --dark-color: var(--brand-dark-color, #131313);
