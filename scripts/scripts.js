@@ -11,6 +11,7 @@ import {
 	loadSections,
 	loadBlocks,
 	loadCSS,
+	buildBlock,
 	fetchPlaceholders,
 	getMetadata,
 	loadScript,
@@ -128,9 +129,20 @@ const experimentationConfig = {
    * Builds all synthetic blocks in a container element.
    * @param {Element} main The container element
    */
-  function buildAutoBlocks() {
+  function buildAutoBlocks(main) {
 		try {
-		  // TODO: add auto block, if needed
+		  // Saudia homepage: inject the booking hero + Explore destinations at the
+		  // top. Guarded so it only runs on the home page and never duplicates an
+		  // authored booking/explore block if one is already present.
+		  const isHome = window.location.pathname === '/' || window.location.pathname === '/en/';
+		  if (main && isHome && !main.querySelector('.booking, .explore')) {
+			const exploreSection = document.createElement('div');
+			exploreSection.append(buildBlock('explore', ''));
+			const bookingSection = document.createElement('div');
+			bookingSection.append(buildBlock('booking', ''));
+			main.prepend(exploreSection);
+			main.prepend(bookingSection);
+		  }
 		} catch (error) {
 		  // eslint-disable-next-line no-console
 		  console.error('Auto Blocking failed', error);
