@@ -1,0 +1,155 @@
+/* ------------------------------------------------------------------
+   Saudia — Explore Destinations
+------------------------------------------------------------------- */
+
+.explore.block {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 84px;
+}
+
+.explore .explore-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.explore .explore-head .explore-intro h2 {
+  font-family: var(--black-font-family);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--saudia-green-dark, #0a342e);
+  margin: 0 0 8px;
+  position: relative;
+}
+
+.explore .explore-head .explore-intro h2::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--saudia-sand, #c9a15a);
+  margin-top: 14px;
+}
+
+.explore .explore-head .explore-intro p {
+  margin: 0;
+  color: #5b6b66;
+  font-size: 1.1rem;
+  max-width: 520px;
+}
+
+.explore .explore-head .explore-all {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--saudia-green, #005a4f);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 6px;
+}
+
+.explore .explore-head .explore-all:hover { color: #04463d; }
+.explore .explore-head .explore-all svg { width: 18px; height: 18px; }
+
+/* Grid */
+.explore .explore-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.explore .dest {
+  position: relative;
+  display: block;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(10, 52, 46, 0.14);
+  isolation: isolate;
+}
+
+.explore .dest img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.explore .dest::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10, 52, 46, 0) 30%, rgba(10, 52, 46, 0.85) 100%);
+}
+
+.explore .dest:hover img { transform: scale(1.08); }
+
+.explore .dest .dest-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.explore .dest .dest-city {
+  font-family: var(--heading-font-family);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.explore .dest .dest-country {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin: 2px 0 0;
+}
+
+.explore .dest .dest-price {
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+.explore .dest .dest-price .label { font-size: 0.72rem; opacity: 0.8; display: block; }
+.explore .dest .dest-price .amount { font-weight: 800; font-size: 1.1rem; white-space: nowrap; }
+
+.explore .dest .dest-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--saudia-sand, #c9a15a);
+  color: #0a342e;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+/* Responsive */
+@media (width < 900px) {
+  .explore .explore-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (width < 560px) {
+  .explore.block { padding: 52px 16px 64px; }
+  .explore .explore-head { flex-direction: column; align-items: flex-start; }
+  .explore .explore-grid { grid-template-columns: 1fr; }
+}
