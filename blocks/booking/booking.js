@@ -81,7 +81,17 @@ export default function decorate(block) {
   const badge = readField('badge', 2) || 'Fly with Saudia';
   const title = readField('title', 3) || 'Where will you go next?';
   const subtitle = readField('subtitle', 4) || 'Book flights to over 100 destinations across the globe.';
-  const searchLabel = readField('searchlabel', 5) || 'Search flights';
+  const labelRound = readField('labelRound', 5) || 'Round trip';
+  const labelOneway = readField('labelOneway', 6) || 'One way';
+  const labelMulti = readField('labelMulti', 7) || 'Multi-city';
+  const labelFrom = readField('labelFrom', 8) || 'From';
+  const labelTo = readField('labelTo', 9) || 'To';
+  const labelDepart = readField('labelDepart', 10) || 'Depart';
+  const labelReturn = readField('labelReturn', 11) || 'Return';
+  const labelPax = readField('labelPax', 12) || 'Passengers & class';
+  const searchLabel = readField('searchlabel', 13) || 'Search flights';
+  const defaultFrom = readField('defaultFrom', 14) || 'JED';
+  const defaultTo = readField('defaultTo', 15) || 'DXB';
 
   readStyleVariants(block, rows).forEach((c) => block.classList.add(c));
   if (heroImg) block.style.setProperty('--booking-hero-bg', `url("${heroImg}")`);
@@ -95,30 +105,30 @@ export default function decorate(block) {
     </div>
     <form class="booking-engine" novalidate>
       <div class="trip-types" role="tablist">
-        <button type="button" class="trip-type" data-trip="round" role="tab" aria-selected="true">Round trip</button>
-        <button type="button" class="trip-type" data-trip="oneway" role="tab" aria-selected="false">One way</button>
-        <button type="button" class="trip-type" data-trip="multi" role="tab" aria-selected="false">Multi-city</button>
+        <button type="button" class="trip-type" data-trip="round" role="tab" aria-selected="true">${labelRound}</button>
+        <button type="button" class="trip-type" data-trip="oneway" role="tab" aria-selected="false">${labelOneway}</button>
+        <button type="button" class="trip-type" data-trip="multi" role="tab" aria-selected="false">${labelMulti}</button>
       </div>
       <div class="booking-fields">
         <div class="field">
-          <label for="bk-from">From</label>
-          <div class="control">${ICONS.plane}<select id="bk-from">${opts('JED')}</select></div>
+          <label for="bk-from">${labelFrom}</label>
+          <div class="control">${ICONS.plane}<select id="bk-from">${opts(defaultFrom)}</select></div>
         </div>
         <button type="button" class="swap" aria-label="Swap origin and destination">${ICONS.swap}</button>
         <div class="field">
-          <label for="bk-to">To</label>
-          <div class="control">${ICONS.land}<select id="bk-to">${opts('DXB')}</select></div>
+          <label for="bk-to">${labelTo}</label>
+          <div class="control">${ICONS.land}<select id="bk-to">${opts(defaultTo)}</select></div>
         </div>
         <div class="field">
-          <label for="bk-depart">Depart</label>
+          <label for="bk-depart">${labelDepart}</label>
           <div class="control">${ICONS.cal}<input type="date" id="bk-depart" value="${todayPlus(14)}" min="${todayPlus(0)}"></div>
         </div>
         <div class="field return-field">
-          <label for="bk-return">Return</label>
+          <label for="bk-return">${labelReturn}</label>
           <div class="control">${ICONS.cal}<input type="date" id="bk-return" value="${todayPlus(21)}" min="${todayPlus(1)}"></div>
         </div>
         <div class="field pax-field">
-          <label>Passengers &amp; class</label>
+          <label>${labelPax}</label>
           <div class="control" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
             ${ICONS.user}<span class="pax-value">1 Adult, Economy</span>
           </div>

@@ -7680,9 +7680,185 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "labelRound",
+        "label": "Tab: Round trip",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelOneway",
+        "label": "Tab: One way",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelMulti",
+        "label": "Tab: Multi-city",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelFrom",
+        "label": "Label: From",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelTo",
+        "label": "Label: To",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelDepart",
+        "label": "Label: Depart",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelReturn",
+        "label": "Label: Return",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "labelPax",
+        "label": "Label: Passengers & class",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "searchlabel",
         "label": "Search Button Label",
         "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "defaultFrom",
+        "label": "Default origin",
+        "options": [
+          {
+            "name": "(Default) Jeddah",
+            "value": ""
+          },
+          {
+            "name": "Jeddah (JED)",
+            "value": "JED"
+          },
+          {
+            "name": "Riyadh (RUH)",
+            "value": "RUH"
+          },
+          {
+            "name": "Dammam (DMM)",
+            "value": "DMM"
+          },
+          {
+            "name": "Madinah (MED)",
+            "value": "MED"
+          },
+          {
+            "name": "Abu Dhabi (AUH)",
+            "value": "AUH"
+          },
+          {
+            "name": "Dubai (DXB)",
+            "value": "DXB"
+          },
+          {
+            "name": "Cairo (CAI)",
+            "value": "CAI"
+          },
+          {
+            "name": "Istanbul (IST)",
+            "value": "IST"
+          },
+          {
+            "name": "London (LHR)",
+            "value": "LHR"
+          },
+          {
+            "name": "Paris (CDG)",
+            "value": "CDG"
+          },
+          {
+            "name": "Rome (FCO)",
+            "value": "FCO"
+          },
+          {
+            "name": "New York (JFK)",
+            "value": "JFK"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "defaultTo",
+        "label": "Default destination",
+        "options": [
+          {
+            "name": "(Default) Dubai",
+            "value": ""
+          },
+          {
+            "name": "Jeddah (JED)",
+            "value": "JED"
+          },
+          {
+            "name": "Riyadh (RUH)",
+            "value": "RUH"
+          },
+          {
+            "name": "Dammam (DMM)",
+            "value": "DMM"
+          },
+          {
+            "name": "Madinah (MED)",
+            "value": "MED"
+          },
+          {
+            "name": "Abu Dhabi (AUH)",
+            "value": "AUH"
+          },
+          {
+            "name": "Dubai (DXB)",
+            "value": "DXB"
+          },
+          {
+            "name": "Cairo (CAI)",
+            "value": "CAI"
+          },
+          {
+            "name": "Istanbul (IST)",
+            "value": "IST"
+          },
+          {
+            "name": "London (LHR)",
+            "value": "LHR"
+          },
+          {
+            "name": "Paris (CDG)",
+            "value": "CDG"
+          },
+          {
+            "name": "Rome (FCO)",
+            "value": "FCO"
+          },
+          {
+            "name": "New York (JFK)",
+            "value": "JFK"
+          }
+        ]
       },
       {
         "component": "select",
