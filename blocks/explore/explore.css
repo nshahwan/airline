@@ -153,3 +153,24 @@
   .explore .explore-head { flex-direction: column; align-items: flex-start; }
   .explore .explore-grid { grid-template-columns: 1fr; }
 }
+
+/* ==========================================================================
+   Authorable style variants (Universal Editor: Font / Size / Shape / Accent)
+   ========================================================================== */
+.explore.font-serif .explore-head h2,
+.explore.font-serif .dest .dest-city { font-family: Georgia, "Times New Roman", serif; }
+.explore.font-mono .explore-head h2,
+.explore.font-mono .dest .dest-city { font-family: "SF Mono", "Courier New", monospace; }
+
+.explore.size-l  .explore-head h2 { font-size: clamp(2.4rem, 4.5vw, 3.4rem); }
+.explore.size-xl .explore-head h2 { font-size: clamp(2.8rem, 5.5vw, 4rem); }
+
+.explore.shape-square  .dest { border-radius: 0; }
+.explore.shape-rounded .dest { border-radius: 20px; }
+.explore.shape-pill    .dest { border-radius: 28px; }
+
+.explore.accent-sand  .explore-head h2::after { background: var(--saudia-sand, #c9a15a); }
+.explore.accent-sand  .explore-all,
+.explore.accent-sand  .dest-tag { color: #0a342e; }
+.explore.accent-green .explore-head h2::after { background: var(--saudia-green, #005a4f); }
+.explore.accent-white .explore-head h2::after { background: #fff; }

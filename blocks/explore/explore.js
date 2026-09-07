@@ -18,11 +18,35 @@ const DESTINATIONS = [
 
 const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
+const STYLE_TOKENS = [
+  'font-serif', 'font-mono', 'size-l', 'size-xl',
+  'shape-square', 'shape-rounded', 'shape-pill',
+  'accent-green', 'accent-sand', 'accent-white',
+];
+
+// Read the authorable style variants (Font / Size / Shape / Accent) — data-aue-prop
+// in the Universal Editor, config-row token scan on publish.
+function readStyleVariants(block, rows) {
+  const out = [];
+  ['font', 'textsize', 'shape', 'accent'].forEach((prop) => {
+    const authored = block.querySelector(`:scope > div [data-aue-prop="${prop}"]`);
+    if (authored) { const v = authored.textContent.trim(); if (v) out.push(v); }
+  });
+  if (!out.length) {
+    rows.forEach((d) => {
+      const t = d.querySelector('div')?.textContent?.trim() || '';
+      if (STYLE_TOKENS.includes(t)) out.push(t);
+    });
+  }
+  return out;
+}
+
 export default function decorate(block) {
   const rows = [...block.querySelectorAll(':scope > div')];
   const authored = (i) => rows[i]?.textContent?.trim() || '';
   const title = authored(0) || 'Explore';
   const subtitle = authored(1) || 'Discover our most-loved destinations and find your next escape.';
+  readStyleVariants(block, rows).forEach((c) => block.classList.add(c));
   block.textContent = '';
 
   const cards = DESTINATIONS.map((d) => `

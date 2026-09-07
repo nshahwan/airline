@@ -373,3 +373,26 @@
   .booking .booking-fields { grid-template-columns: 1fr; }
   .booking .swap { order: 0; }
 }
+
+/* ==========================================================================
+   Authorable style variants (Universal Editor: Font / Size / Shape / Accent)
+   ========================================================================== */
+.booking.font-serif .booking-hero h1,
+.booking.font-serif .booking-hero p { font-family: Georgia, "Times New Roman", serif; }
+.booking.font-mono .booking-hero h1,
+.booking.font-mono .booking-hero p { font-family: "SF Mono", "Courier New", monospace; }
+
+.booking.size-l  .booking-hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.4rem); }
+.booking.size-xl .booking-hero h1 { font-size: clamp(3.2rem, 6.5vw, 5.2rem); }
+
+.booking.shape-square  .search-btn,
+.booking.shape-square  .field .control { border-radius: 0; }
+.booking.shape-rounded .search-btn,
+.booking.shape-rounded .field .control { border-radius: 14px; }
+.booking.shape-pill    .search-btn,
+.booking.shape-pill    .field .control { border-radius: 100px; }
+
+/* Accent remaps the block's green to the chosen colour */
+.booking.accent-sand  { --saudia-green: var(--saudia-sand, #c9a15a); }
+.booking.accent-white { --saudia-green: #0a342e; }
+.booking.accent-white .booking-badge { background: #fff; }

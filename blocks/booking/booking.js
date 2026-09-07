@@ -40,6 +40,30 @@ function todayPlus(days) {
   return d.toISOString().split('T')[0];
 }
 
+const STYLE_TOKENS = [
+  'font-serif', 'font-mono', 'size-l', 'size-xl',
+  'shape-square', 'shape-rounded', 'shape-pill',
+  'accent-green', 'accent-sand', 'accent-white',
+];
+
+// Read the authorable style variants (Font / Size / Shape / Accent). Uses the
+// data-aue-prop attributes in the Universal Editor; on publish it scans the
+// config rows for known style tokens, so it never depends on row position.
+function readStyleVariants(block, rows) {
+  const out = [];
+  ['font', 'textsize', 'shape', 'accent'].forEach((prop) => {
+    const authored = block.querySelector(`:scope > div [data-aue-prop="${prop}"]`);
+    if (authored) { const v = authored.textContent.trim(); if (v) out.push(v); }
+  });
+  if (!out.length) {
+    rows.forEach((d) => {
+      const t = d.querySelector('div')?.textContent?.trim() || '';
+      if (STYLE_TOKENS.includes(t)) out.push(t);
+    });
+  }
+  return out;
+}
+
 export default function decorate(block) {
   // Read optional authored overrides (positional), then clear the block.
   const rows = [...block.querySelectorAll(':scope > div')];
@@ -47,6 +71,7 @@ export default function decorate(block) {
   const badge = authored(0) || 'Fly with Saudia';
   const title = authored(1) || 'Where will you go next?';
   const subtitle = authored(2) || 'Book flights to over 100 destinations across the globe.';
+  readStyleVariants(block, rows).forEach((c) => block.classList.add(c));
   block.textContent = '';
 
   block.innerHTML = `
