@@ -7643,10 +7643,24 @@
     "id": "booking",
     "fields": [
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Hero Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Hero Image Alt",
+        "value": ""
+      },
+      {
         "component": "text",
         "valueType": "string",
         "name": "badge",
-        "label": "Badge",
+        "label": "Badge Text",
         "value": ""
       },
       {
@@ -7661,6 +7675,13 @@
         "valueType": "string",
         "name": "subtitle",
         "label": "Subtitle",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "searchlabel",
+        "label": "Search Button Label",
         "value": ""
       },
       {

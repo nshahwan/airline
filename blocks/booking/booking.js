@@ -65,13 +65,26 @@ function readStyleVariants(block, rows) {
 }
 
 export default function decorate(block) {
-  // Read optional authored overrides (positional), then clear the block.
   const rows = [...block.querySelectorAll(':scope > div')];
-  const authored = (i) => rows[i]?.textContent?.trim() || '';
-  const badge = authored(0) || 'Fly with Saudia';
-  const title = authored(1) || 'Where will you go next?';
-  const subtitle = authored(2) || 'Book flights to over 100 destinations across the globe.';
+  // Read a field by its Universal Editor data-aue-prop; fall back to the
+  // positional row index on published pages (matches the model field order).
+  const readField = (prop, index) => {
+    const authored = block.querySelector(`:scope > div [data-aue-prop="${prop}"]`);
+    if (authored) return authored.textContent.trim();
+    return rows[index]?.textContent?.trim() || '';
+  };
+
+  // Authored hero image (asset) — found position-independently anywhere in the block.
+  const heroPic = block.querySelector('picture img, img');
+  const heroImg = heroPic?.getAttribute('src') || '';
+
+  const badge = readField('badge', 2) || 'Fly with Saudia';
+  const title = readField('title', 3) || 'Where will you go next?';
+  const subtitle = readField('subtitle', 4) || 'Book flights to over 100 destinations across the globe.';
+  const searchLabel = readField('searchlabel', 5) || 'Search flights';
+
   readStyleVariants(block, rows).forEach((c) => block.classList.add(c));
+  if (heroImg) block.style.setProperty('--booking-hero-bg', `url("${heroImg}")`);
   block.textContent = '';
 
   block.innerHTML = `
@@ -130,7 +143,7 @@ export default function decorate(block) {
             </div>
           </div>
         </div>
-        <button type="submit" class="search-btn">${ICONS.search}<span>Search flights</span></button>
+        <button type="submit" class="search-btn">${ICONS.search}<span>${searchLabel}</span></button>
       </div>
     </form>
     <div class="booking-toast" role="status" aria-live="polite"></div>
