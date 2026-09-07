@@ -1389,6 +1389,94 @@
         "label": "Badge / Highlight Text",
         "description": "Optional pill-style label shown above the title.",
         "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "font",
+        "label": "Font",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Serif",
+            "value": "font-serif"
+          },
+          {
+            "name": "Mono",
+            "value": "font-mono"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textsize",
+        "label": "Text Size",
+        "options": [
+          {
+            "name": "Medium",
+            "value": ""
+          },
+          {
+            "name": "Large",
+            "value": "size-l"
+          },
+          {
+            "name": "Extra Large",
+            "value": "size-xl"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "shape",
+        "label": "Button Shape",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Square",
+            "value": "shape-square"
+          },
+          {
+            "name": "Rounded",
+            "value": "shape-rounded"
+          },
+          {
+            "name": "Pill",
+            "value": "shape-pill"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "accent",
+        "label": "Accent Color",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Saudia Green",
+            "value": "accent-green"
+          },
+          {
+            "name": "Sand / Gold",
+            "value": "accent-sand"
+          },
+          {
+            "name": "White",
+            "value": "accent-white"
+          }
+        ]
       }
     ]
   },

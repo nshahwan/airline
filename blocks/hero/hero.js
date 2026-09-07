@@ -118,6 +118,31 @@ export default function decorate(block) {
   if (backgroundStyle) block.classList.add(backgroundStyle);
   if (enableUnderline.toLowerCase() === 'false') block.classList.add('removeunderline');
 
+  // --- Optional style-variant classes: Font / Text Size / Button Shape / Accent ---
+  // In the Universal Editor each field carries a data-aue-prop, so read those.
+  // On publish there are no aue attributes, so scan the config divs for any known
+  // style token (values are distinct class names) — avoids fragile positional indexes.
+  const STYLE_TOKENS = [
+    'font-serif', 'font-mono',
+    'size-l', 'size-xl',
+    'shape-square', 'shape-rounded', 'shape-pill',
+    'accent-green', 'accent-sand', 'accent-white',
+  ];
+  let styleApplied = false;
+  ['font', 'textsize', 'shape', 'accent'].forEach((prop) => {
+    const authored = block.querySelector(`:scope > div [data-aue-prop="${prop}"]`);
+    if (authored) {
+      const val = authored.textContent.trim();
+      if (val) { block.classList.add(val); styleApplied = true; }
+    }
+  });
+  if (!styleApplied) {
+    childDivs.forEach((div) => {
+      const val = div.querySelector('div')?.textContent?.trim() || '';
+      if (STYLE_TOKENS.includes(val)) block.classList.add(val);
+    });
+  }
+
   // Hero uses explicit CTA fields (CTA Button Label + Link). Any hyperlink the
   // author placed inside the Text richtext is left as a plain inline link
   // instead of being auto-converted into a button.

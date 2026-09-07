@@ -663,3 +663,37 @@ picture {
   color: var(--text-color);
   background: rgba(0, 0, 0, 0.08);
 }
+/* ==========================================================================
+   Authorable style variants (set in Universal Editor: Font / Size / Shape / Accent)
+   ========================================================================== */
+
+/* --- Font --- */
+.hero.font-serif h1,
+.hero.font-serif h2,
+.hero.font-serif h3,
+.hero.font-serif h4,
+.hero.font-serif h5,
+.hero.font-serif h6,
+.hero.font-serif p { font-family: Georgia, "Times New Roman", serif; }
+
+.hero.font-mono h1,
+.hero.font-mono h2,
+.hero.font-mono h3,
+.hero.font-mono h4,
+.hero.font-mono h5,
+.hero.font-mono h6,
+.hero.font-mono p { font-family: "SF Mono", "Courier New", monospace; letter-spacing: -0.01em; }
+
+/* --- Text size (scales the main heading) --- */
+.hero.size-l h1  { font-size: clamp(2.6rem, 5vw, 4rem); }
+.hero.size-xl h1 { font-size: clamp(3rem, 6vw, 5rem); }
+
+/* --- Button shape (applies to the hero CTA) --- */
+.hero.shape-square  .button-container a.button { border-radius: 0; }
+.hero.shape-rounded .button-container a.button { border-radius: 12px; }
+.hero.shape-pill    .button-container a.button { border-radius: 100px; }
+
+/* --- Accent color (drives the title underline + CTA + focus states) --- */
+.hero.accent-green { --main-accent-color: var(--saudia-green, #005a4f); }
+.hero.accent-sand  { --main-accent-color: var(--saudia-sand, #c9a15a); }
+.hero.accent-white { --main-accent-color: #ffffff; }
