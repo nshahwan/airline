@@ -7861,6 +7861,13 @@
         ]
       },
       {
+        "component": "richtext",
+        "name": "airports",
+        "valueType": "string",
+        "label": "Airport List (one per line: City (CODE))",
+        "value": "<p>Jeddah (JED)</p><p>Riyadh (RUH)</p><p>Dammam (DMM)</p><p>Madinah (MED)</p><p>Abu Dhabi (AUH)</p><p>Dubai (DXB)</p><p>Cairo (CAI)</p><p>Istanbul (IST)</p><p>London (LHR)</p><p>Paris (CDG)</p><p>Rome (FCO)</p><p>New York (JFK)</p>"
+      },
+      {
         "component": "select",
         "valueType": "string",
         "name": "font",

@@ -6,7 +6,7 @@
      1  badge      2  title      3  subtitle
 ------------------------------------------------------------------- */
 
-const AIRPORTS = [
+const DEFAULT_AIRPORTS = [
   { code: 'JED', city: 'Jeddah' },
   { code: 'RUH', city: 'Riyadh' },
   { code: 'DMM', city: 'Dammam' },
@@ -21,6 +21,21 @@ const AIRPORTS = [
   { code: 'JFK', city: 'New York' },
 ];
 
+// Parse the authored "Airport List" field into [{ city, code }].
+// Accepts one airport per line as "City (CODE)" or "City, CODE".
+// Returns null when nothing usable is authored, so callers fall back to defaults.
+function parseAirports(cell) {
+  if (!cell) return null;
+  let lines = [...cell.querySelectorAll('p, li')].map((e) => e.textContent.trim()).filter(Boolean);
+  if (!lines.length) lines = cell.textContent.split('\n').map((s) => s.trim()).filter(Boolean);
+  const out = [];
+  lines.forEach((line) => {
+    const m = line.match(/^(.+?)\s*\(([A-Za-z]{3})\)\s*$/) || line.match(/^(.+?)\s*,\s*([A-Za-z]{3})\s*$/);
+    if (m) out.push({ city: m[1].trim(), code: m[2].toUpperCase() });
+  });
+  return out.length ? out : null;
+}
+
 const ICONS = {
   plane: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>',
   land: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20M3.8 16.5l16.5 3c.5.1 1-.2 1.2-.7.2-.6-.1-1.2-.7-1.4L16 15.5l-2-9.5c-.1-.5-.5-.9-1-1l-.8-.2c-.6-.1-1.1.4-1 1l.6 6.8-4-1-1-2.3c-.1-.3-.4-.5-.7-.5H4.5c-.4 0-.7.4-.6.8L5 12l-2 .8c-.4.2-.6.6-.5 1l.3 1.5c.1.5.5.8 1 .7z"/></svg>',
@@ -30,8 +45,8 @@ const ICONS = {
   search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>',
 };
 
-function opts(selected) {
-  return AIRPORTS.map((a) => `<option value="${a.code}" ${a.code === selected ? 'selected' : ''}>${a.city} (${a.code})</option>`).join('');
+function opts(list, selected) {
+  return list.map((a) => `<option value="${a.code}" ${a.code === selected ? 'selected' : ''}>${a.city} (${a.code})</option>`).join('');
 }
 
 function todayPlus(days) {
@@ -93,6 +108,10 @@ export default function decorate(block) {
   const defaultFrom = readField('defaultFrom', 14) || 'JED';
   const defaultTo = readField('defaultTo', 15) || 'DXB';
 
+  // Authored, editable airport list (drives both From/To dropdowns).
+  const airportsCell = block.querySelector(':scope > div [data-aue-prop="airports"]') || rows[16];
+  const airports = parseAirports(airportsCell) || DEFAULT_AIRPORTS;
+
   readStyleVariants(block, rows).forEach((c) => block.classList.add(c));
   if (heroImg) block.style.setProperty('--booking-hero-bg', `url("${heroImg}")`);
   block.textContent = '';
@@ -112,12 +131,12 @@ export default function decorate(block) {
       <div class="booking-fields">
         <div class="field">
           <label for="bk-from">${labelFrom}</label>
-          <div class="control">${ICONS.plane}<select id="bk-from">${opts(defaultFrom)}</select></div>
+          <div class="control">${ICONS.plane}<select id="bk-from">${opts(airports, defaultFrom)}</select></div>
         </div>
         <button type="button" class="swap" aria-label="Swap origin and destination">${ICONS.swap}</button>
         <div class="field">
           <label for="bk-to">${labelTo}</label>
-          <div class="control">${ICONS.land}<select id="bk-to">${opts(defaultTo)}</select></div>
+          <div class="control">${ICONS.land}<select id="bk-to">${opts(airports, defaultTo)}</select></div>
         </div>
         <div class="field">
           <label for="bk-depart">${labelDepart}</label>
